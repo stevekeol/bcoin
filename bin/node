@@ -29,7 +29,7 @@ const node = new FullNode({
   logConsole: true,
   logLevel: 'debug',
   memory: false,
-  workers: true,
+  workers: true, //仅仅是boolean类型的值
   listen: true,
   loader: require
 });
