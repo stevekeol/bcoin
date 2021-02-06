@@ -1,0 +1,12 @@
+{
+  "bcoin-dev.min.js": {
+    "bundled": 3259,
+    "minified": 3241,
+    "gzipped": 1011
+  },
+  "bcoin.min.js": {
+    "bundled": 3259,
+    "minified": 3241,
+    "gzipped": 1011
+  }
+}

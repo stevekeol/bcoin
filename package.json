@@ -3,25 +3,6 @@
   "version": "2.1.2",
   "description": "Bitcoin bike-shed",
   "license": "MIT",
-  "repository": "git://github.com/bcoin-org/bcoin.git",
-  "homepage": "https://github.com/bcoin-org/bcoin",
-  "bugs": {
-    "url": "https://github.com/bcoin-org/bcoin/issues"
-  },
-  "author": "Fedor Indutny <fedor@indutny.com>",
-  "contributors": [
-    "Christopher Jeffrey <chjjeffrey@gmail.com>"
-  ],
-  "keywords": [
-    "bcoin",
-    "bitcoin",
-    "blockchain",
-    "cryptocurrency",
-    "wallet"
-  ],
-  "engines": {
-    "node": ">=10.0.0"
-  },
   "dependencies": {
     "bcfg": "git+https://github.com/bcoin-org/bcfg.git#semver:~0.1.6",
     "bcrypto": "git+https://github.com/bcoin-org/bcrypto.git#semver:~5.0.4",
@@ -52,48 +33,6 @@
     "n64": "git+https://github.com/chjj/n64.git#semver:~0.2.10",
     "nan": "git+https://github.com/braydonf/nan.git#semver:=2.14.0"
   },
-  "bundleDependencies": [
-    "bcfg",
-    "bcrypto",
-    "bcurl",
-    "bdb",
-    "bdns",
-    "bevent",
-    "bfile",
-    "bfilter",
-    "bheep",
-    "binet",
-    "blgr",
-    "blru",
-    "blst",
-    "bmutex",
-    "brq",
-    "bs32",
-    "bsert",
-    "bsock",
-    "bsocks",
-    "btcp",
-    "buffer-map",
-    "bufio",
-    "bupnp",
-    "bval",
-    "bweb",
-    "loady",
-    "n64",
-    "nan"
-  ],
-  "devDependencies": {
-    "bmocha": "git+https://github.com/bcoin-org/bmocha.git#semver:=2.1.2"
-  },
-  "main": "./lib/bcoin.js",
-  "bin": {
-    "bcoin": "./bin/bcoin",
-    "bcoin-node": "./bin/node",
-    "bcoin-spvnode": "./bin/spvnode",
-    "bwallet": "./bin/bwallet",
-    "bcoin-cli": "./bin/bcoin-cli",
-    "bwallet-cli": "./bin/bwallet-cli"
-  },
   "scripts": {
     "browserify": "browserify -s bcoin lib/bcoin-browser.js | uglifyjs -c > bcoin.js",
     "clean": "rm -f {browser/,}{bcoin.js,bcoin-worker.js,app.js,worker.js}",
@@ -105,13 +44,8 @@
     "test-browser": "NODE_BACKEND=js bmocha --reporter spec test/*.js",
     "test-file": "bmocha --reporter spec",
     "test-file-browser": "NODE_BACKEND=js bmocha --reporter spec",
-    "test-ci": "nyc -a -n 'lib/**/*.js' --reporter=lcov --reporter=text npm run test"
-  },
-  "browser": {
-    "./lib/hd/nfkd": "./lib/hd/nfkd-compat.js",
-    "./lib/hd/wordlist": "./lib/hd/wordlist-browser.js",
-    "./lib/workers/child": "./lib/workers/child-browser.js",
-    "./lib/workers/parent": "./lib/workers/parent-browser.js",
-    "./lib/bcoin": "./lib/bcoin-browser.js"
+    "test-ci": "nyc -a -n 'lib/**/*.js' --reporter=lcov --reporter=text npm run test",
+    "build-browser-min": "bpkg --browser --umd --plugin [ uglify-es --toplevel ] --name Bcoin --output browser/app.js lib/bcoin-browser.js",
+    "build-browser": "bpkg --browser --umd --name Bcoin --output docs/build/app.js lib/bcoin-browser.js"
   }
 }
